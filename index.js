@@ -1,3 +1,4 @@
+require("express-async-errors");
 const users = require("./routes/users");
 const auth = require("./routes/auth");
 const error = require("./middleware/error");
