@@ -11,7 +11,7 @@ module.exports = function () {
     // process.exit(1);
   });
   winston.add(new winston.transports.File({ filename: "log.log" }));
-  winston.add(
-    new winston.transports.MongoDB({ db: "mongodb://localhost/hamroguru" })
-  );
+  // winston.add(
+  //   new winston.transports.MongoDB({ db: "mongodb://localhost/hamroguru" })
+  // );
 };

@@ -2,7 +2,7 @@ const error = require("../middleware/error");
 const express = require("express");
 const users = require("../routes/users");
 const auth = require("../routes/auth");
-const address = require("../routes/address");
+const address = require("../routes/addresses");
 
 module.exports = function (app) {
   app.use(express.json());

@@ -10,13 +10,14 @@ router.post("/", auth, async (req, res) => {
   if (result.error) {
     return res.status(400).send(result.error.details[0].message);
   }
-  const address = Address.findOne({ userId: req.user._id });
+  let address = await Address.findOne({ userId: req.user._id });
   if (address) {
-    res.status(405).send("Method not allowed.");
+    return res.status(405).send("Method not allowed.");
   }
-  req.body.userId = req.user.userId;
-  address = new Address(_.pick(req.body));
-  response.send(address);
+  req.body.userId = req.user._id;
+  address = new Address(req.body);
+  await address.save();
+  res.send(address);
 });
 
 module.exports = router;
