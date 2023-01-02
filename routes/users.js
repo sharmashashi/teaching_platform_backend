@@ -53,7 +53,6 @@ router.post("/", async (request, response) => {
 // });
 
 router.get("/me", auth, async (request, response) => {
-  throw new Error("Could not get me");
   const user = await User.findById(request.user._id).select("-password");
   response.send(user);
 });
