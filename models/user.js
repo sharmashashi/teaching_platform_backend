@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const mongoose = require("mongoose");
 const _ = require("lodash");
+const fs = require("fs");
 
 const schema = new mongoose.Schema({
   firstname: {
@@ -38,7 +39,11 @@ const schema = new mongoose.Schema({
 });
 
 schema.methods.generateAuthToken = function () {
-  return jwt.sign(_.pick(this, ["_id", "email"]), "secretePrivateKey");
+  const privateKey = fs.readFileSync(
+    "/Users/shashisharma/Projects/HamroGuru/hamro_guru_backend/config/jwt/key",
+    "utf8"
+  );
+  return jwt.sign(_.pick(this, ["_id", "email"]), privateKey);
 };
 
 const User = new mongoose.model("User", schema);
