@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 
-const schema = new mongoose.schema({
+const schema = new mongoose.Schema({
   dob: {
     Type: Date,
     required: true,

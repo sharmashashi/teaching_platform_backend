@@ -1,7 +1,11 @@
 const Joi = require("joi");
 const mongoose = require("mongoose");
 
-const schema = new mongoose.schema({
+const schema = new mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
+  },
   token: { type: String },
   ipAddress: { type: String },
   name: { type: String },
@@ -15,7 +19,7 @@ const DeviceInfo = new mongoose.model("DeviceInfo", schema);
 function validateDeviceInfo(deviceInfo) {
   const schema = new Joi.object({
     token: Joi.string(),
-    ipAddress: Joi.String(),
+    ipAddress: Joi.string(),
     name: Joi.string(),
     model: Joi.string(),
     model: Joi.string(),
