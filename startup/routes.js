@@ -6,6 +6,7 @@ const addresses = require("../routes/addresses");
 const devices = require("../routes/devices");
 const notes = require("../routes/notes");
 const students = require("../routes/students");
+const courses = require("../routes/courses");
 
 module.exports = function (app) {
   app.use(express.json());
@@ -15,5 +16,6 @@ module.exports = function (app) {
   app.use("/api/devices", devices);
   app.use("/api/notes", notes);
   app.use("/api/students", students);
+  app.use("/api/courses", courses);
   app.use(error);
 };
