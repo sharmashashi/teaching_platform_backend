@@ -72,3 +72,12 @@ router.get("/", auth, async (req, res) => {
   const notes = await Note.find();
   res.send(notes);
 });
+
+router.delete("/:id", auth, async (req, res) => {
+  const note = await Note.findById(req.params.id);
+  if (!note) {
+    return res.status(400).send("Note not found");
+  }
+  await note.delete();
+  res.send("Note has been deleted");
+});

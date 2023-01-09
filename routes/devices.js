@@ -39,3 +39,4 @@ router.put("/:id", auth, async (req, res) => {
   await deviceInfo.save();
   res.send(deviceInfo);
 });
+
